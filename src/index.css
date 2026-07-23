@@ -401,7 +401,7 @@ p {
   transition: transform 300ms var(--ease), border-color 300ms var(--ease),
     box-shadow 300ms var(--ease);
 }
-.project-card:hover {
+a.project-card:hover {
   transform: translateY(-5px);
   border-color: var(--accent);
   box-shadow: 0 14px 32px -18px rgba(28, 23, 18, 0.35);
