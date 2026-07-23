@@ -583,14 +583,37 @@ p {
   list-style: none;
 }
 .social-row a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--ink-soft);
   text-decoration: none;
   transition: color 200ms var(--ease);
 }
+.social-row a svg {
+  color: var(--ink-faint);
+  transition: color 200ms var(--ease), transform 200ms var(--ease);
+}
 .social-row a:hover {
   color: var(--accent);
+}
+.social-row a:hover svg {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+.hero-social {
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--line);
+  width: fit-content;
+  padding-right: var(--s-7);
+}
+
+.contact-social {
+  margin-top: var(--s-7);
 }
 
 /* -------------------------------------------------------- reduced motion */

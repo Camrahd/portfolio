@@ -36,21 +36,21 @@ const PROJECTS = [
     description:
       "An agentic multi-document RAG assistant that plans retrieval, routes queries across sources, and self-corrects grounding before answering.",
     tags: ["LangGraph", "LLMs", "Vector DBs", "Python"],
-    href: `${LINKS.github}/AgenticRAG`,
+    href: `${LINKS.github}/Gen-AI-Projects/tree/main/agentic-rag`,
   },
   {
     name: "Autonomous Coding Assistant",
     description:
       "A tool-using coding agent that reads a repository, plans multi-step edits, runs tests, and iterates until the change actually works.",
     tags: ["Agents", "Tool Use", "FastAPI", "Python"],
-    href: `${LINKS.github}/autonomous-coding-assistant`,
+    href: `${LINKS.github}/claud_code`,
   },
   {
     name: "Healthcare RAG Retrieval Optimization",
     description:
       "Retrieval tuning for clinical document QA — hybrid search, reranking, and evaluation harnesses that measurably cut hallucinated answers.",
     tags: ["RAG", "Hybrid Search", "Reranking", "Evals"],
-    href: `${LINKS.github}/healthcare-rag-optimization`,
+    // href: `${LINKS.github}/healthcare-rag-optimization`,
   },
 ];
 
@@ -197,6 +197,44 @@ function Nav() {
   );
 }
 
+const SOCIALS = [
+  ["GitHub", LINKS.github],
+  ["LinkedIn", LINKS.linkedin],
+  ["LeetCode", LINKS.leetcode],
+];
+
+function SocialLinks({ className, withEmail }) {
+  return (
+    <ul className={`social-row${className ? ` ${className}` : ""}`}>
+      {SOCIALS.map(([label, href]) => (
+        <li key={label}>
+          <a href={href} target="_blank" rel="noreferrer">
+            {label}
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M7 17L17 7M9 7h8v8" />
+            </svg>
+          </a>
+        </li>
+      ))}
+      {withEmail && (
+        <li>
+          <a href={`mailto:${LINKS.email}`}>Email</a>
+        </li>
+      )}
+    </ul>
+  );
+}
+
 /* ------------------------------------------------------- hero + canvas */
 
 function HeroCanvas() {
@@ -297,6 +335,9 @@ function Hero() {
           <a className="btn btn-ghost" href="#contact">
             Get in Touch
           </a>
+        </div>
+        <div className="reveal" style={{ "--reveal-delay": "320ms" }}>
+          <SocialLinks className="hero-social" />
         </div>
       </div>
       <p className="hero-scroll" aria-hidden="true">
@@ -482,6 +523,9 @@ function Contact() {
       >
         {LINKS.email}
       </a>
+      <div className="reveal" style={{ "--reveal-delay": "240ms" }}>
+        <SocialLinks className="contact-social" />
+      </div>
     </section>
   );
 }
@@ -493,26 +537,7 @@ function Footer() {
         <p className="footer-note">
           &copy; {new Date().getFullYear()} Dharmendra Reddy Chitte
         </p>
-        <ul className="social-row">
-          <li>
-            <a href={LINKS.github} target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a href={LINKS.linkedin} target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
-          </li>
-          <li>
-            <a href={LINKS.leetcode} target="_blank" rel="noreferrer">
-              LeetCode
-            </a>
-          </li>
-          <li>
-            <a href={`mailto:${LINKS.email}`}>Email</a>
-          </li>
-        </ul>
+        <SocialLinks withEmail />
       </div>
     </footer>
   );
